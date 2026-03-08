@@ -14,7 +14,7 @@ Search engines must quickly find relevant documents among thousands or millions 
 
 Instead of scanning every document for each query, search engines build a special data structure called an **Inverted Index**, which maps:
 
-```
+```text
 Example:
 hello → {1,2}
 world → {1,3}
@@ -33,7 +33,7 @@ This project demonstrates the practical use of several discrete mathematics conc
 
 Each word corresponds to a **set of documents** containing it.
 
-```
+```text
 Example:
 hello → {1,2}
 world → {1,3}
@@ -51,7 +51,7 @@ Mathematically:
 
 The inverted index represents a relation:
 
-```
+```text
 R ⊆ Words × Documents
 
 Example pairs:
@@ -89,7 +89,8 @@ The first phase implements the **document storage layer** of the search engine.
 - Display stored documents
 
 **Example input file:**
-```
+
+```text
 hello world
 hello chatgpt
 world of ai
@@ -98,7 +99,8 @@ hello ai world
 ```
 
 **Example output:**
-```
+
+```text
 Doc 1: hello world
 Doc 2: hello chatgpt
 Doc 3: world of ai
@@ -106,58 +108,90 @@ Doc 4: search engines are fun
 Doc 5: hello ai world
 ```
 
+### Phase 2 — Tokenizer Engine
+
+The tokenizer converts raw document text into normalized tokens (words) that can be indexed.
+
+Steps performed:
+
+- Convert text to lowercase
+- Remove punctuation
+- Split text into individual words
+
+Example:
+
+```text
+Input:
+Hello, WORLD!!! Search Engines.
+
+Output tokens:
+hello
+world
+search
+engines
+```
+
+This preprocessing step ensures that different textual representations of the same word are treated uniformly during indexing.
 
 ---
 
-# Project Structure
+## Project Structure
+
+```text
 mini-search-engine-cpp
 │
 ├── main.cpp
 ├── SearchEngine.cpp
 ├── SearchEngine.h
+├── Tokenizer.cpp
+├── Tokenizer.h
 ├── documents.txt
 └── README.md
+```
 
 ---
 
-# Complexity Analysis
+## Complexity Analysis
 
 Let:
+
 N = number of documents
 
 Document loading complexity:
 
 Time Complexity:
 
-O(N) 
+O(N)
 
 Space Complexity:
+
 O(N)
 
 ---
 
-# Future Phases
+## Future Phases
 
 The project will be expanded in the following phases:
 
-### Phase 2
-Tokenizer for text normalization.
-
 ### Phase 3
+
 Inverted index construction.
 
 ### Phase 4
+
 Boolean query engine (`AND`, `OR`).
 
 ### Phase 5
+
 Basic ranking using term frequency.
 
 ### Phase 6
+
 Command-line search interface.
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 - **C++**
 - Standard Template Library (STL)
@@ -167,7 +201,7 @@ Command-line search interface.
 
 ---
 
-# Learning Goals
+## Learning Goals
 
 This project demonstrates:
 
@@ -179,11 +213,11 @@ This project demonstrates:
 
 ---
 
-# Author
+## Author
 
-**Moulik Choudhary**  
-Computer Science Engineering Student  
+**Moulik Choudhary**
+Computer Science Engineering Student
 Chandigarh University
 
-GitHub:  
+GitHub:
 https://github.com/Moulik-ai
