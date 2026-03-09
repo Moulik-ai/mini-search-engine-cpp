@@ -36,3 +36,12 @@ void SearchEngine::displayDocuments() const{
 int SearchEngine::getDocumentCount() const{
     return documents.size();
 }
+
+void SearchEngine::buildIndex() {
+    indexer.buildIndex(documents);
+}
+
+void SearchEngine::displayIndex() const 
+{
+    indexer.displayIndex();
+}

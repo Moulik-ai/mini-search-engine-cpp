@@ -3,11 +3,13 @@
 
 #include <vector>
 #include <string>
+#include "Indexer.h"
 
 class SearchEngine {
     private:
 
         std::vector<std::string> documents;
+        Indexer indexer;
 
     public:
         void loadDocuments(const std::string& filename);
@@ -15,5 +17,8 @@ class SearchEngine {
         void displayDocuments() const;
 
         int getDocumentCount() const;
+
+        void buildIndex();
+        void displayIndex() const;
 };
 #endif
