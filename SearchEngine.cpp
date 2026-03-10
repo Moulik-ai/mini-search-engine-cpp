@@ -45,3 +45,22 @@ void SearchEngine::displayIndex() const
 {
     indexer.displayIndex();
 }
+
+void SearchEngine::searchQuery(const string& query) const {
+    QueryEngine qe(indexer);
+
+    set<int> results = qe.search(query);
+
+    cout << "\nSearch Results:\n";
+
+    if (results.empty())
+    {
+        cout << "No documents found.\n";
+        return;
+    }
+
+    for (int id : results) {
+        cout << "Doc " << id << ": "
+             << documents[id-1] << endl;
+    }
+}

@@ -83,10 +83,12 @@ The first phase implements the **document storage layer** of the search engine.
 
 **Features:**
 
-- Load documents from a text file
-- Assign unique **document IDs**
-- Store documents in memory
-- Display stored documents
+- Document storage system
+- Text tokenization and normalization
+- Inverted index construction
+- Boolean query engine
+- Fast word lookup using hash tables
+- Set-based query processing
 
 **Example input file:**
 
@@ -135,6 +137,105 @@ This preprocessing step ensures that different textual representations of the sa
 
 ---
 
+### Phase 4 — Boolean Query Engine
+
+The search engine now supports Boolean search queries, allowing users to retrieve documents using logical operations.
+
+Supported query types:
+
+**Single Word Search**
+
+Returns all documents containing the given word.
+
+Example:
+
+```text
+hello
+```
+
+Output:
+
+```text
+Doc 1: hello world
+Doc 2: hello chatgpt
+Doc 5: hello ai world
+```
+
+**AND Queries**
+
+Finds documents that contain both words.
+
+Mathematically this corresponds to set intersection.
+
+```text
+A ∩ B
+```
+
+Example:
+
+```text
+hello AND world
+```
+
+Index lookup:
+
+```text
+hello → {1,2,5}
+world → {1,3,5}
+```
+
+Computation:
+
+```text
+{1,2,5} ∩ {1,3,5} = {1,5}
+```
+
+Result:
+
+```text
+Doc 1: hello world
+Doc 5: hello ai world
+```
+
+**OR Queries**
+
+Finds documents containing either word.
+
+Mathematically this corresponds to set union.
+
+```text
+A ∪ B
+```
+
+Example:
+
+```text
+hello OR ai
+```
+
+Computation:
+
+```text
+{1,2,5} ∪ {3,5} = {1,2,3,5}
+```
+
+**Example Execution**
+
+Enter search query:
+
+```text
+hello AND world
+```
+
+Output:
+
+```text
+Doc 1: hello world
+Doc 5: hello ai world
+```
+
+---
+
 ## Project Structure
 
 ```text
@@ -145,6 +246,10 @@ mini-search-engine-cpp
 ├── SearchEngine.h
 ├── Tokenizer.cpp
 ├── Tokenizer.h
+├── Indexer.cpp
+├── Indexer.h
+├── QueryEngine.cpp
+├── QueryEngine.h
 ├── documents.txt
 └── README.md
 ```

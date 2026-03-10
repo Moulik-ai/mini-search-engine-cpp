@@ -19,6 +19,17 @@ int main() {
 
     engine.buildIndex();
     engine.displayIndex();
+    string query;
+
+    while (true) {
+        cout << "\nEnter search query (type exit to quit): ";
+        getline(cin, query);
+
+        if (query == "exit")
+            break;
+
+        engine.searchQuery(query);
+    }
 
     return 0;
 }

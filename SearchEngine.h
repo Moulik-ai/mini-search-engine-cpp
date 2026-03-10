@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "Indexer.h"
+#include "QueryEngine.h"
 
 class SearchEngine {
     private:
@@ -20,5 +21,6 @@ class SearchEngine {
 
         void buildIndex();
         void displayIndex() const;
+        void searchQuery(const std::string& query) const;
 };
 #endif
