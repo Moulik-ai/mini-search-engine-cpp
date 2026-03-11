@@ -28,7 +28,7 @@ int main() {
         if (query == "exit")
             break;
 
-        engine.searchQuery(query);
+        engine.rankedSearch(query);
     }
 
     return 0;

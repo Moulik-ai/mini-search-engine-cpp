@@ -1,6 +1,8 @@
 #include "SearchEngine.h"
 #include <iostream>
 #include <fstream>
+#include "Tokenizer.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -62,5 +64,38 @@ void SearchEngine::searchQuery(const string& query) const {
     for (int id : results) {
         cout << "Doc " << id << ": "
              << documents[id-1] << endl;
+    }
+}
+
+void SearchEngine::rankedSearch(const string& word) const {
+    set<int> docs = indexer.getDocuments(word);
+
+    vector<pair<int, int>> scores;
+
+    for (int id : docs) {
+        vector<string> tokens = Tokenizer::tokenize(documents[id-1]);
+
+        int count = 0;
+        
+        for (const string& t : tokens) 
+        {
+            if (t == word) 
+                count++;
+        }
+        scores.push_back({id,count});
+    }
+
+    sort(scores.begin(), scores.end(), 
+        [](const pair<int,int>& a, const pair<int,int>& b)
+    {
+        return a.second > b.second;
+    });
+
+    cout << "\nRanked Results:\n";
+
+    for (auto &p : scores) {
+        cout << "Doc " << p.first
+            << " (score " << p.second << "): "
+            << documents[p.first-1] << endl;
     }
 }

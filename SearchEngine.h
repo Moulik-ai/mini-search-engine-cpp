@@ -2,6 +2,7 @@
 #define SEARCH_ENGINE_H
 
 #include <vector>
+#include <utility>
 #include <string>
 #include "Indexer.h"
 #include "QueryEngine.h"
@@ -22,5 +23,6 @@ class SearchEngine {
         void buildIndex();
         void displayIndex() const;
         void searchQuery(const std::string& query) const;
+        void rankedSearch(const std:: string& word) const;
 };
 #endif
