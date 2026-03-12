@@ -124,10 +124,15 @@ This phase implements the **document storage layer** of the search engine.
 
 Features:
 
-* Load documents from a text file
-* Assign unique document IDs
-* Store documents in memory
-* Display stored documents
+## Features
+
+• Document storage system  
+• Text tokenization and normalization  
+• Inverted index construction  
+• Boolean query processing (AND / OR)  
+• Term frequency based ranking  
+• Interactive command-line interface  
+• Fast word lookup using hash tables  
 
 Example input file:
 
@@ -313,6 +318,81 @@ Doc 5: hello ai world
 
 ---
 
+# Phase 6 — Interactive Command Line Interface
+
+This phase introduces an interactive **Command Line Interface (CLI)** that allows users to interact with the search engine through a menu-driven system.
+
+Instead of manually modifying code to test queries, users can now perform operations directly through the terminal.
+
+The interface provides the following options:
+
+Mini Search Engine
+
+1. Show Documents
+2. Show Inverted Index
+3. Boolean Search
+4. Ranked Search
+5. Exit
+
+Users can now:
+
+• View all stored documents  
+• Inspect the generated inverted index  
+• Perform Boolean queries (`AND`, `OR`)  
+• Run ranked searches based on **Term Frequency**  
+• Exit the application safely  
+
+---
+
+## Example Execution
+
+Mini Search Engine
+
+1. Show Documents  
+2. Show Inverted Index  
+3. Boolean Search  
+4. Ranked Search  
+5. Exit  
+
+Enter your choice:
+
+Example Boolean query:
+
+hello AND world
+
+Output:
+
+Doc 1: hello world  
+Doc 5: hello ai world
+
+Example ranked search:
+
+hello
+
+Output:
+
+Doc 5 (score 2): hello ai world  
+Doc 1 (score 1): hello world  
+Doc 2 (score 1): hello chatgpt
+
+---
+
+## System Architecture
+
+The complete search engine pipeline now looks like this:
+
+Documents  
+↓  
+Tokenizer  
+↓  
+Indexer (Inverted Index)  
+↓  
+Query Engine  
+↓  
+Ranking System  
+↓  
+CLI Interface
+
 # Project Structure
 
 ```
@@ -400,13 +480,6 @@ This project demonstrates:
 
 The project will be extended with additional features:
 
-## Phase 5
-
-Document ranking using **Term Frequency (TF)**.
-
-## Phase 6
-
-Interactive **Command-Line Search Interface**.
 
 ## Phase 7
 
