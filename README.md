@@ -8,7 +8,7 @@ The goal of this project is to bridge the gap between **theoretical computer sci
 
 ---
 
-# Project Motivation
+## Project Motivation
 
 Search engines must quickly retrieve relevant documents from very large collections of text.
 
@@ -32,11 +32,11 @@ Using this structure allows queries to be answered using **fast set operations i
 
 ---
 
-# Discrete Mathematics Concepts Used
+## Discrete Mathematics Concepts Used
 
 This project demonstrates how discrete mathematics concepts appear in real software systems.
 
-## 1. Set Theory
+### 1. Set Theory
 
 Each word corresponds to a **set of documents** that contain it.
 
@@ -72,7 +72,7 @@ These operations power **Boolean search queries**.
 
 ---
 
-## 2. Relations
+### 2. Relations
 
 The inverted index represents a mathematical relation:
 
@@ -94,7 +94,7 @@ Each pair means **a word appears in a document**.
 
 ---
 
-## 3. Hashing
+### 3. Hashing
 
 To allow fast lookup of words, the inverted index uses a **hash table**:
 
@@ -112,27 +112,25 @@ Which makes searching extremely efficient.
 
 ---
 
-# Current Implementation
+## Current Implementation
 
 The project is being developed in **incremental phases**, similar to how real software systems evolve.
 
 ---
 
-# Phase 1 — Document Storage System
+### Phase 1 — Document Storage System
 
 This phase implements the **document storage layer** of the search engine.
 
-Features:
+**Features:**
 
-## Features
-
-• Document storage system  
-• Text tokenization and normalization  
-• Inverted index construction  
-• Boolean query processing (AND / OR)  
-• Term frequency based ranking  
-• Interactive command-line interface  
-• Fast word lookup using hash tables  
+- Document storage system
+- Text tokenization and normalization
+- Inverted index construction
+- Boolean query processing (AND / OR)
+- Term frequency based ranking
+- Interactive command-line interface
+- Fast word lookup using hash tables
 
 Example input file:
 
@@ -156,15 +154,15 @@ Doc 5: hello ai world
 
 ---
 
-# Phase 2 — Tokenizer Engine
+### Phase 2 — Tokenizer Engine
 
 The tokenizer converts raw document text into **normalized tokens (words)** that can be indexed.
 
 Steps performed:
 
-* Convert text to lowercase
-* Remove punctuation
-* Split text into individual words
+- Convert text to lowercase
+- Remove punctuation
+- Split text into individual words
 
 Example:
 
@@ -187,7 +185,7 @@ This preprocessing step ensures that **different textual forms of a word are tre
 
 ---
 
-# Phase 3 — Inverted Index Construction
+### Phase 3 — Inverted Index Construction
 
 This phase builds the **core data structure of the search engine**.
 
@@ -214,13 +212,13 @@ This allows the search engine to retrieve documents containing a word **without 
 
 ---
 
-# Phase 4 — Boolean Query Engine
+### Phase 4 — Boolean Query Engine
 
 The search engine now supports **Boolean search queries**, allowing users to retrieve documents using logical operations.
 
 Supported query types:
 
-## Single Word Search
+#### Single Word Search
 
 Returns all documents containing the given word.
 
@@ -240,7 +238,7 @@ Doc 5: hello ai world
 
 ---
 
-## AND Queries
+#### AND Queries
 
 Finds documents that contain **both words**.
 
@@ -278,7 +276,7 @@ Doc 5: hello ai world
 
 ---
 
-## OR Queries
+#### OR Queries
 
 Finds documents containing **either word**.
 
@@ -302,7 +300,7 @@ Computation:
 
 ---
 
-# Example Execution
+#### Example Execution
 
 ```
 Enter search query:
@@ -318,7 +316,7 @@ Doc 5: hello ai world
 
 ---
 
-# Phase 6 — Interactive Command Line Interface
+### Phase 6 — Interactive Command Line Interface
 
 This phase introduces an interactive **Command Line Interface (CLI)** that allows users to interact with the search engine through a menu-driven system.
 
@@ -336,15 +334,15 @@ Mini Search Engine
 
 Users can now:
 
-• View all stored documents  
-• Inspect the generated inverted index  
-• Perform Boolean queries (`AND`, `OR`)  
-• Run ranked searches based on **Term Frequency**  
-• Exit the application safely  
+- View all stored documents
+- Inspect the generated inverted index
+- Perform Boolean queries (`AND`, `OR`)
+- Run ranked searches based on **Term Frequency**
+- Exit the application safely
 
 ---
 
-## Example Execution
+#### Example Execution
 
 Mini Search Engine
 
@@ -377,6 +375,10 @@ Doc 2 (score 1): hello chatgpt
 
 ---
 
+### Phase 7 — TF-IDF Ranking
+
+Improves document ranking using Term Frequency–Inverse Document Frequency (TF-IDF), a standard ranking method used in information retrieval systems.
+
 ## System Architecture
 
 The complete search engine pipeline now looks like this:
@@ -393,7 +395,7 @@ Ranking System
 ↓  
 CLI Interface
 
-# Project Structure
+## Project Structure
 
 ```
 mini-search-engine-cpp
@@ -413,7 +415,7 @@ mini-search-engine-cpp
 
 ---
 
-# Complexity Analysis
+## Complexity Analysis
 
 Let:
 
@@ -452,42 +454,37 @@ Where **k is the size of the document sets**.
 
 ---
 
-# Technologies Used
+## Technologies Used
 
-* **C++**
-* Standard Template Library (STL)
-* File I/O
-* Hash Tables (`unordered_map`)
-* Sets (`std::set`)
-* String Processing
+- **C++**
+- Standard Template Library (STL)
+- File I/O
+- Hash Tables (`unordered_map`)
+- Sets (`std::set`)
+- String Processing
 
 ---
 
-# Learning Goals
+## Learning Goals
 
 This project demonstrates:
 
-* Data Structures in C++
-* Hash Tables and Sets
-* Information Retrieval Basics
-* Discrete Mathematics in real systems
-* Modular system design
-* Boolean search algorithms
+- Data Structures in C++
+- Hash Tables and Sets
+- Information Retrieval Basics
+- Discrete Mathematics in real systems
+- Modular system design
+- Boolean search algorithms
 
 ---
 
-# Future Phases
+## Future Phases
 
-The project will be extended with additional features:
-
-
-## Phase 7
-
-Performance improvements and advanced query handling.
+The project will be extended with additional features.
 
 ---
 
-# Author
+## Author
 
 **Moulik Choudhary**
 Computer Science Engineering Student

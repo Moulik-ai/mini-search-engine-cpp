@@ -2,4 +2,4 @@ hello world
 hello chatgpt
 world of ai
 search engines are fun
-hello hello ai world
+hello ai world

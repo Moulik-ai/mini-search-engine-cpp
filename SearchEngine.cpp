@@ -99,3 +99,45 @@ void SearchEngine::rankedSearch(const string& word) const {
             << documents[p.first-1] << endl;
     }
 }
+
+void SearchEngine::tfidfSearch(const string& word) const {
+    set<int> docs = indexer.getDocuments(word);
+
+    int N = documents.size();
+    int DF = docs.size();
+
+    if (DF == 0) {
+        cout << "No documents found.\n";
+        return;
+    }
+
+    double idf = long((double)N / DF);
+
+    vector<pair<int,double>> scores;
+
+    for (int id : docs) {
+        vector<string> tokens = Tokenizer::tokenize(documents[id-1]);
+
+        int tf = 0;
+
+        for (const string &t : tokens) {
+            if (t == word) 
+                tf++;
+        }
+        double score = tf * idf;
+
+        scores.push_back({id, score});
+    }
+
+    sort(scores.begin(), scores.end(),[](auto &a, auto &b) {
+        return a.second > b.second;
+    });
+
+    cout << "\nTF-IDF Ranked Results:\n";
+
+    for (auto &p : scores) {
+        cout << "Doc " << p.first 
+            << " (score " << p.second << "): "
+            << documents[p.first-1] << endl;
+    }
+}

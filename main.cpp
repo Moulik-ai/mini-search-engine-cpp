@@ -14,6 +14,7 @@ int main() {
 
     int choice;
     string query;
+    engine.tfidfSearch(query);
 
     while (true)
     {
@@ -22,7 +23,7 @@ int main() {
         cout << "1. Show Documents\n";
         cout << "2. Show Inverted Index\n";
         cout << "3. Boolean Search\n";
-        cout << "4. Ranked Search\n";
+        cout << "4. TF-IDFRanked Search\n";
         cout << "5.Exit\n";
         cout << "Enter your choice: ";
 
@@ -42,10 +43,10 @@ int main() {
             engine.searchQuery(query);
         }
         else if (choice == 4) {
-            cout << "Enter word for ranked search: ";
+            cout << "Enter word for TF-IDF ranked search: ";
             getline(cin, query);
 
-            engine.rankedSearch(query);
+            engine.tfidfSearch(query);
         }
         else if (choice == 5) {
             cout << "\nExiting search engine....\n";
@@ -55,6 +56,7 @@ int main() {
             cout << "Invalid choice.\n";
         }
     }
+    engine.tfidfSearch(query);
 
     return 0;
 }
