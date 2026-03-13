@@ -141,3 +141,26 @@ void SearchEngine::tfidfSearch(const string& word) const {
             << documents[p.first-1] << endl;
     }
 }
+
+void SearchEngine::phraseSearch(const string& phrase) const {
+    vector<string> words = Tokenizer::tokenize(phrase);
+
+    if (words.size() != 2) {
+        cout << "Only two-word phrases supported.\n";
+        return;
+    }
+
+    vector<int> docs = indexer.phraseSearch(words[0], words[1]);
+
+    if (docs.empty()) {
+        cout << "No phrase matches found.\n";
+        return;
+    }
+
+    cout << "\nPhrase Search Results:\n";
+
+    for (int id : docs) {
+        cout << "Doc " << id << ": "
+             << documents[id-1] << endl;
+    }
+}

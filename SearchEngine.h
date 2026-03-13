@@ -26,5 +26,6 @@ class SearchEngine {
         void searchQuery(const std::string& query) const;
         void rankedSearch(const std:: string& word) const;
         void tfidfSearch(const std::string& word) const;
+        void phraseSearch(const std::string& phrase) const;
 };
 #endif

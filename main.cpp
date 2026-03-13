@@ -48,7 +48,14 @@ int main() {
 
             engine.tfidfSearch(query);
         }
+
         else if (choice == 5) {
+            cout << "Enter phrase: ";
+            getline(cin, query);
+
+            engine.phraseSearch(query);
+        }
+        else if (choice == 6) {
             cout << "\nExiting search engine....\n";
             break;
         }
