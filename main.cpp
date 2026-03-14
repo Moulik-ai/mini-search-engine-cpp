@@ -9,7 +9,7 @@ int main() {
 
     SearchEngine engine;
 
-    engine.loadDocuments("documents.txt");
+    engine.loadDocumentsFromDirectory("test_docs");
     engine.buildIndex();
 
     int choice;
@@ -24,7 +24,8 @@ int main() {
         cout << "2. Show Inverted Index\n";
         cout << "3. Boolean Search\n";
         cout << "4. TF-IDFRanked Search\n";
-        cout << "5.Exit\n";
+        cout << "5. Phrase Search\n";
+        cout << "6.Exit\n";
         cout << "Enter your choice: ";
 
         cin >> choice;

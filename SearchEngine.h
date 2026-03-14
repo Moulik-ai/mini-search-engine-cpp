@@ -27,5 +27,6 @@ class SearchEngine {
         void rankedSearch(const std:: string& word) const;
         void tfidfSearch(const std::string& word) const;
         void phraseSearch(const std::string& phrase) const;
+        void loadDocumentsFromDirectory(const std::string& folder);
 };
 #endif

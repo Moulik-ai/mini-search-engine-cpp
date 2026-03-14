@@ -3,8 +3,10 @@
 #include <fstream>
 #include "Tokenizer.h"
 #include <algorithm>
+#include <filesystem>
 
 using namespace std;
+namespace fs = filesystem;
 
 void SearchEngine::loadDocuments(const string& filename)
 {
@@ -163,4 +165,27 @@ void SearchEngine::phraseSearch(const string& phrase) const {
         cout << "Doc " << id << ": "
              << documents[id-1] << endl;
     }
+}
+
+void SearchEngine::loadDocumentsFromDirectory(const string& folder) {
+    documents.clear();
+
+    for (const auto& entry : fs::directory_iterator(folder)) {
+        if (entry.path().extension() == ".txt") {
+            ifstream file(entry.path());
+
+            string line;
+            string content;
+
+            while (getline(file, line)) {
+                content += line + " ";
+            }
+
+            documents.push_back(content);
+
+            file.close();
+        }
+    }
+
+    cout << documents.size() << " documents loaded from directory.\n";
 }
