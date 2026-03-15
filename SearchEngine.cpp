@@ -4,6 +4,7 @@
 #include "Tokenizer.h"
 #include <algorithm>
 #include <filesystem>
+#include <cctype>
 
 using namespace std;
 namespace fs = filesystem;
@@ -188,4 +189,9 @@ void SearchEngine::loadDocumentsFromDirectory(const string& folder) {
     }
 
     cout << documents.size() << " documents loaded from directory.\n";
+}
+
+string toLower(string text) {
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
+    return text;
 }

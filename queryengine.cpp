@@ -1,5 +1,7 @@
 #include "QueryEngine.h"
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -40,6 +42,9 @@ set<int> QueryEngine::search(const string& query) const
     if(!(ss >> op)) {
         return indexer.getDocuments(word1);
     }
+
+    transform(op.begin(), op.end(), op.begin(),
+        [](unsigned char c) { return static_cast<char>(toupper(c)); });
 
     ss >> word2;
 

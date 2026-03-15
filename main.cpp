@@ -2,6 +2,8 @@
 #include "SearchEngine.h"
 #include "Tokenizer.h"
 #include "Indexer.h"
+#include <cctype>
+#include <algorithm>
 
 using namespace std;
 
@@ -40,12 +42,15 @@ int main() {
         else if (choice == 3) {
             cout << "Enter query : ";
             getline(cin, query);
-            
+            transform(query.begin(), query.end(), query.begin(),
+                [](unsigned char c) { return static_cast<char>(tolower(c)); });
             engine.searchQuery(query);
         }
         else if (choice == 4) {
             cout << "Enter word for TF-IDF ranked search: ";
             getline(cin, query);
+            transform(query.begin(), query.end(), query.begin(),
+                [](unsigned char c) { return static_cast<char>(tolower(c)); });
 
             engine.tfidfSearch(query);
         }
@@ -53,7 +58,9 @@ int main() {
         else if (choice == 5) {
             cout << "Enter phrase: ";
             getline(cin, query);
-
+            transform(query.begin(), query.end(), query.begin(),
+                [](unsigned char c) { return static_cast<char>(tolower(c)); });
+            
             engine.phraseSearch(query);
         }
         else if (choice == 6) {
